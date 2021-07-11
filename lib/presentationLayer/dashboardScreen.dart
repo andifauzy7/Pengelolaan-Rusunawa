@@ -207,7 +207,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                   Icon(
                                     Icons.bar_chart,
-                                    size: 48,
+                                    size: 36,
                                     color: ColorsTheme.mainColor,
                                   )
                                 ],
@@ -229,7 +229,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Perlu Perbaikan',
+                                        'Perbaikan',
                                         style: TextStyle(
                                             color: ColorsTheme.mainColor,
                                             fontSize: 16.0),
@@ -245,7 +245,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   ),
                                   Icon(
                                     Icons.warning,
-                                    size: 48,
+                                    size: 36,
                                     color: ColorsTheme.mainColor,
                                   )
                                 ],

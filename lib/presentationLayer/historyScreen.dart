@@ -53,6 +53,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 child: GridView.builder(
                   itemCount: 12,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height * 0.5),
                       crossAxisCount: 2,
                       crossAxisSpacing: 2.0,
                       mainAxisSpacing: 2.0),
@@ -72,7 +73,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               'assets/rusun3.jpg',
                               fit: BoxFit.cover,
                               width: double.infinity,
-                              height: 110,
+                              height: 100,
                             ),
                           ),
                           Padding(

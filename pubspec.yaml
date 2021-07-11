@@ -34,6 +34,7 @@ dependencies:
   flutter_bloc:
   salomon_bottom_bar:
   flutter_image_slideshow:
+  flutter_staggered_grid_view:
 
 dev_dependencies:
   flutter_test:
