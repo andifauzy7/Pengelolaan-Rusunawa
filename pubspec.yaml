@@ -33,6 +33,7 @@ dependencies:
   fluttertoast:
   flutter_bloc:
   salomon_bottom_bar:
+  flutter_image_slideshow:
 
 dev_dependencies:
   flutter_test:

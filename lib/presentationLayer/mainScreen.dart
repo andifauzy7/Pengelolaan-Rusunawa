@@ -3,6 +3,7 @@ import 'package:pengelolaan_rusunawa/presentationLayer/exploreScreen.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/historyScreen.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/postingScreen.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/profileScreen.dart';
+import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import 'dashboardScreen.dart';
@@ -25,10 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.orangeAccent,
-        child: _pages[_currentIndex],
-      ),
+      body: _pages[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
@@ -36,27 +34,27 @@ class _MainScreenState extends State<MainScreen> {
           SalomonBottomBarItem(
             icon: Icon(Icons.dashboard),
             title: Text("Dashboard"),
-            selectedColor: Colors.deepOrange,
+            selectedColor: ColorsTheme.mainColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.explore),
             title: Text("Cari"),
-            selectedColor: Colors.deepOrange,
+            selectedColor: ColorsTheme.mainColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.add_location_alt_outlined),
             title: Text("Posting"),
-            selectedColor: Colors.deepOrange,
+            selectedColor: ColorsTheme.mainColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.home_work),
             title: Text("Kelola"),
-            selectedColor: Colors.deepOrange,
+            selectedColor: ColorsTheme.mainColor,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.person),
             title: Text("Profil"),
-            selectedColor: Colors.deepOrange,
+            selectedColor: ColorsTheme.mainColor,
           ),
         ],
       ),
