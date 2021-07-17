@@ -4,8 +4,6 @@ import 'package:pengelolaan_rusunawa/presentationLayer/historyScreen.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/postingScreen.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/profileScreen.dart';
 import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
 import 'dashboardScreen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -27,36 +25,128 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex],
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: _currentIndex,
-        onTap: (i) => setState(() => _currentIndex = i),
-        items: [
-          SalomonBottomBarItem(
-            icon: Icon(Icons.dashboard),
-            title: Text("Dashboard"),
-            selectedColor: ColorsTheme.mainColor,
+      appBar: AppBar(
+        title: Text("Pengelolaan Rusunawa"),
+      ),
+      drawer: SafeArea(
+        child: Drawer(
+          child: ListView(
+            children: [
+              Container(
+                color: ColorsTheme.mainColor,
+                padding: EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/avatar.png',
+                      width: 50,
+                    ),
+                    SizedBox(
+                      width: 16.0,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Halo,',
+                          style: TextStyle(
+                              color: ColorsTheme.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Andi Fauzy',
+                          style: TextStyle(
+                              color: ColorsTheme.white, fontSize: 16.0),
+                        ),
+                        Text(
+                          'Kementerian PUPR',
+                          style: TextStyle(
+                              color: ColorsTheme.white, fontSize: 12.0),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                trailing: Icon(Icons.navigate_next),
+                leading: Icon(Icons.dashboard),
+                tileColor: (_currentIndex == 0)
+                    ? ColorsTheme.fiveColor
+                    : ColorsTheme.white,
+                title: Text(
+                  "Dashboard",
+                ),
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 0;
+                  });
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.navigate_next),
+                leading: Icon(Icons.explore),
+                tileColor: (_currentIndex == 1)
+                    ? ColorsTheme.fiveColor
+                    : ColorsTheme.white,
+                title: Text(
+                  "Cari",
+                ),
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 1;
+                  });
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.navigate_next),
+                leading: Icon(Icons.add_location_alt_outlined),
+                tileColor: (_currentIndex == 2)
+                    ? ColorsTheme.fiveColor
+                    : ColorsTheme.white,
+                title: Text(
+                  "Posting",
+                ),
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 2;
+                  });
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.navigate_next),
+                leading: Icon(Icons.home_work),
+                tileColor: (_currentIndex == 3)
+                    ? ColorsTheme.fiveColor
+                    : ColorsTheme.white,
+                title: Text(
+                  "Kelola",
+                ),
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 3;
+                  });
+                },
+              ),
+              ListTile(
+                trailing: Icon(Icons.navigate_next),
+                leading: Icon(Icons.person),
+                tileColor: (_currentIndex == 4)
+                    ? ColorsTheme.fiveColor
+                    : ColorsTheme.white,
+                title: Text(
+                  "Profil",
+                ),
+                onTap: () {
+                  setState(() {
+                    _currentIndex = 4;
+                  });
+                },
+              )
+            ],
           ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.explore),
-            title: Text("Cari"),
-            selectedColor: ColorsTheme.mainColor,
-          ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.add_location_alt_outlined),
-            title: Text("Posting"),
-            selectedColor: ColorsTheme.mainColor,
-          ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.home_work),
-            title: Text("Kelola"),
-            selectedColor: ColorsTheme.mainColor,
-          ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Profil"),
-            selectedColor: ColorsTheme.mainColor,
-          ),
-        ],
+        ),
       ),
     );
   }

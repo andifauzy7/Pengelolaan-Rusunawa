@@ -80,6 +80,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            /*
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
@@ -113,7 +114,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       onPressed: null)
                 ],
               ),
-            ),
+            ),*/
             Expanded(
                 child: Container(
               padding: EdgeInsets.all(16.0),
