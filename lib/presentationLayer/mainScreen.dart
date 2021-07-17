@@ -27,6 +27,8 @@ class _MainScreenState extends State<MainScreen> {
       body: _pages[_currentIndex],
       appBar: AppBar(
         title: Text("Pengelolaan Rusunawa"),
+        centerTitle: true,
+        backgroundColor: ColorsTheme.mainColor,
       ),
       drawer: SafeArea(
         child: Drawer(

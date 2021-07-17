@@ -76,266 +76,220 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsTheme.mainColor,
       body: SafeArea(
-        child: Column(
-          children: [
-            /*
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        child: Container(
+          padding: EdgeInsets.all(16.0),
+          margin: EdgeInsets.only(top: 8.0),
+          child: ListView(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24.0),
+                child: ImageSlideshow(
+                    width: double.infinity,
+                    height: 200,
+                    initialPage: 0,
+                    indicatorColor: ColorsTheme.mainColor,
+                    indicatorBackgroundColor: ColorsTheme.fiveColor,
+                    autoPlayInterval: 3000,
                     children: [
-                      Container(
-                          child: Image.asset(
-                        "assets/avatar.png",
-                        width: 50,
-                      )),
-                      SizedBox(
-                        width: 16.0,
+                      Image.asset(
+                        'assets/rusunawa.jpg',
+                        fit: BoxFit.cover,
                       ),
-                      Text(
-                        'Halo, Andi Fauzy',
-                        style: TextStyle(
-                            color: ColorsTheme.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
+                      Image.asset(
+                        'assets/rusun1.jpg',
+                        fit: BoxFit.cover,
                       ),
-                    ],
+                      Image.asset(
+                        'assets/rusun2.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                      Image.asset(
+                        'assets/rusun3.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ]),
+              ),
+              SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Laporan',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Rusunawa yang anda kelola',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor, fontSize: 14.0),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Card(
+                      color: ColorsTheme.fiveColor,
+                      child: Container(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Rusunawa',
+                                    style: TextStyle(
+                                        color: ColorsTheme.mainColor,
+                                        fontSize: 16.0),
+                                  ),
+                                  Text(
+                                    '125',
+                                    style: TextStyle(
+                                        color: ColorsTheme.mainColor,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.bar_chart,
+                                size: 36,
+                                color: ColorsTheme.mainColor,
+                              )
+                            ],
+                          )),
+                    ),
                   ),
-                  IconButton(
-                      icon: Icon(
-                        Icons.notifications,
-                        size: 25,
-                        color: ColorsTheme.white,
-                      ),
-                      onPressed: null)
+                  Expanded(
+                    flex: 1,
+                    child: Card(
+                      color: ColorsTheme.redAccent,
+                      child: Container(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Perbaikan',
+                                    style: TextStyle(
+                                        color: ColorsTheme.mainColor,
+                                        fontSize: 16.0),
+                                  ),
+                                  Text(
+                                    '5',
+                                    style: TextStyle(
+                                        color: ColorsTheme.mainColor,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.warning,
+                                size: 36,
+                                color: ColorsTheme.mainColor,
+                              )
+                            ],
+                          )),
+                    ),
+                  ),
                 ],
               ),
-            ),*/
-            Expanded(
-                child: Container(
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 8.0),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24),
-                      topRight: Radius.circular(24))),
-              child: ListView(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(24.0),
-                    child: ImageSlideshow(
-                        width: double.infinity,
-                        height: 200,
-                        initialPage: 0,
-                        indicatorColor: ColorsTheme.mainColor,
-                        indicatorBackgroundColor: ColorsTheme.fiveColor,
-                        autoPlayInterval: 3000,
-                        children: [
-                          Image.asset(
-                            'assets/rusunawa.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                          Image.asset(
-                            'assets/rusun1.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                          Image.asset(
-                            'assets/rusun2.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                          Image.asset(
-                            'assets/rusun3.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ]),
-                  ),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Laporan',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Rusunawa yang anda kelola',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor, fontSize: 14.0),
-                        ),
-                      ],
+              SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Tips',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Card(
-                          color: ColorsTheme.fiveColor,
-                          child: Container(
-                              padding: EdgeInsets.all(16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Rusunawa',
-                                        style: TextStyle(
-                                            color: ColorsTheme.mainColor,
-                                            fontSize: 16.0),
-                                      ),
-                                      Text(
-                                        '125',
-                                        style: TextStyle(
-                                            color: ColorsTheme.mainColor,
-                                            fontSize: 24.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  Icon(
-                                    Icons.bar_chart,
-                                    size: 36,
-                                    color: ColorsTheme.mainColor,
-                                  )
-                                ],
-                              )),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Card(
-                          color: ColorsTheme.redAccent,
-                          child: Container(
-                              padding: EdgeInsets.all(16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Perbaikan',
-                                        style: TextStyle(
-                                            color: ColorsTheme.mainColor,
-                                            fontSize: 16.0),
-                                      ),
-                                      Text(
-                                        '5',
-                                        style: TextStyle(
-                                            color: ColorsTheme.mainColor,
-                                            fontSize: 24.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  Icon(
-                                    Icons.warning,
-                                    size: 36,
-                                    color: ColorsTheme.mainColor,
-                                  )
-                                ],
-                              )),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Tips',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Fitur yang ada pada aplikasi',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor, fontSize: 14.0),
-                        ),
-                      ],
+                    Text(
+                      'Fitur yang ada pada aplikasi',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor, fontSize: 14.0),
                     ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: dataTips.length,
-                      itemBuilder: (context, index) {
-                        return tipsAplikasi(
-                            dataTips[index][0], dataTips[index][1]);
-                      },
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 120,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: dataTips.length,
+                  itemBuilder: (context, index) {
+                    return tipsAplikasi(
+                        dataTips[index][0], dataTips[index][1]);
+                  },
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Informasi',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Informasi',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Informasi Aplikasi',
-                          style: TextStyle(
-                              color: ColorsTheme.mainColor, fontSize: 14.0),
-                        ),
-                      ],
+                    Text(
+                      'Informasi Aplikasi',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor, fontSize: 14.0),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Row(
+                  children: [
+                    Container(
+                        child: Image.asset(
                           "assets/jawa_barat.png",
                           width: 50,
                         )),
-                        SizedBox(
-                          width: 16.0,
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Aplikasi Mobile yang dikembangkan untuk membantu pengelolaan Rusunawa yang ada di Jawa Barat secara online. Aplikasi ini dapat digunakan oleh Petugas UPT Pengelolaan Rusunawa. Daftar fitur yang dimiliki oleh aplikasi diantaranya : Login, Registrasi, Logout, Pengelolaan Rusunawa dan Notifikasi Pemeliharaan.',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                                color: ColorsTheme.mainColor, fontSize: 14.0),
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      width: 16.0,
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Text(
+                        'Aplikasi Mobile yang dikembangkan untuk membantu pengelolaan Rusunawa yang ada di Jawa Barat secara online. Aplikasi ini dapat digunakan oleh Petugas UPT Pengelolaan Rusunawa. Daftar fitur yang dimiliki oleh aplikasi diantaranya : Login, Registrasi, Logout, Pengelolaan Rusunawa dan Notifikasi Pemeliharaan.',
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            color: ColorsTheme.mainColor, fontSize: 14.0),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ))
-          ],
+            ],
+          ),
         ),
       ),
     );
