@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pengelolaan_rusunawa/presentationLayer/loginScreen.dart';
+import 'package:pengelolaan_rusunawa/presentationLayer/splashScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Pengelolaan Rusunawa",
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }
