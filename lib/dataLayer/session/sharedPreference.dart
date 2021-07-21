@@ -1,15 +1,18 @@
+import 'package:pengelolaan_rusunawa/dataLayer/model/responseLogin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreference {
   static String _idPengguna = "ID_KEY";
   static String _usernamePengguna = "USERNAME_KEY";
   static String _namaPengguna = "NAMA_KEY";
+  static String _password = "PASSWORD_KEY";
 
-  static Future<void> savePengguna(int id, String username, String nama) async {
+  static Future<void> savePengguna(Data pengguna) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(_usernamePengguna, username);
-    prefs.setString(_namaPengguna, nama);
-    prefs.setInt(_idPengguna, id);
+    prefs.setString(_usernamePengguna, pengguna.username);
+    prefs.setString(_namaPengguna, pengguna.nama);
+    prefs.setString(_password, pengguna.password);
+    prefs.setInt(_idPengguna, int.parse(pengguna.idPengguna));
   }
 
   static Future<String> getUsername() async {
@@ -40,5 +43,38 @@ class SharedPreference {
     } else {
       return null;
     }
+  }
+
+  static Future<String> getPassword() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String password = prefs.getString(_password);
+    if (password != null) {
+      return password;
+    } else {
+      return null;
+    }
+  }
+
+  static Future<Data> getDataPengguna() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String nama = prefs.getString(_namaPengguna);
+    String usernameKey = prefs.getString(_usernamePengguna);
+    String password = prefs.getString(_password);
+    int id = prefs.getInt(_idPengguna);
+    Data pengguna = Data(
+        idPengguna: id.toString(),
+        nama: nama,
+        username: usernameKey,
+        password: password);
+    if (pengguna != null) {
+      return pengguna;
+    } else {
+      return null;
+    }
+  }
+
+  static Future<void> deleteSharedPref() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
   }
 }

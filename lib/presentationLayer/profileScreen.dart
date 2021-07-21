@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pengelolaan_rusunawa/dataLayer/session/sharedPreference.dart';
+import 'package:pengelolaan_rusunawa/presentationLayer/ubahProfilScreen.dart';
 import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
 
 import 'loginScreen.dart';
@@ -16,7 +18,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SafeArea(
         child: Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 padding: EdgeInsets.all(16.0),
@@ -29,6 +30,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 margin: EdgeInsets.only(left: 16.0, right: 16.0),
                 child: InkWell(
                   onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UbahProfilScreen()));
                   },
                   child: ListTile(
                     leading: Icon(Icons.file_copy),
@@ -43,10 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 margin: EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0),
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                    _showMaterialDialog(context);
                   },
                   child: ListTile(
                     leading: Icon(Icons.logout),
@@ -62,5 +64,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  _showMaterialDialog(BuildContext context) {
+
+    Future<void> logout() async {
+      await SharedPreference.deleteSharedPref();
+      Navigator.pop(context);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LoginScreen()));
+    }
+
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text("Keluar"),
+          content: Text("Anda yakin keluar dari aplikasi?"),
+          actions: <Widget>[
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: ColorsTheme.mainColor, // background
+                onPrimary: Colors.white, // foreground
+              ),
+              child: Text(
+                'Ya',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                logout();
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey, // background
+                onPrimary: Colors.white, // foreground
+              ),
+              child: Text(
+                'Tidak',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ));
   }
 }

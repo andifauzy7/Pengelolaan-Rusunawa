@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             SizedBox(
                               height: 24.0,
                             ),
-                            TextField(
+                            TextFormField(
                               decoration: InputDecoration(
                                 hintText: 'Isi nama lengkap anda.',
                                 hintStyle:
@@ -122,6 +122,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                               controller: _nama,
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return "Harus diisi";
+                                } else if (value.length < 4) {
+                                  return "Minimum 4 karakter";
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                             SizedBox(
                               height: 16.0,

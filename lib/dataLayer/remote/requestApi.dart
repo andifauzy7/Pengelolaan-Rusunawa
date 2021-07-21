@@ -41,4 +41,16 @@ class RequestApi {
       return false;
     }
   }
+
+  static Future<bool> editPengguna(Map<String, dynamic> data, String id) async {
+    var uri = Uri.http(apiUrl, 'pengguna/${id}');
+    var result = await http.put(uri,
+        body: data);
+    log("editPengguna (CODE : ${result.statusCode}) : ${result.body}");
+    if(result.statusCode == 200){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

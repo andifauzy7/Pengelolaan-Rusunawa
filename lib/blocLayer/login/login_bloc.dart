@@ -23,10 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             {'username': event.username, 'password': event.password});
         if (resultLogin != false) {
           var responseLogin = ResponseLogin.fromJson(resultLogin);
-          await SharedPreference.savePengguna(
-              int.parse(responseLogin.data[0].idPengguna),
-              responseLogin.data[0].username,
-              responseLogin.data[0].nama);
+          await SharedPreference.savePengguna(responseLogin.data[0]);
           yield LoginStateSuccess("Login berhasil!");
         } else {
           yield LoginStateFailed("Login gagal, periksa akun anda!");
