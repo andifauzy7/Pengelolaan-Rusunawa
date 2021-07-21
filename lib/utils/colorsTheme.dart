@@ -8,5 +8,7 @@ class ColorsTheme {
   static final fiveColor = Color(0xFFCFF4D1);
   static final white = Colors.white;
   static final redAccent = Colors.red[100];
-
+  static final orangeAccentDark = Colors.orange[200];
+  static final orangeAccent = Colors.orange[100];
+  static final blueAccent = Colors.blue[100];
 }

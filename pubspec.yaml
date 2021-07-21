@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons:
   shared_preferences:
   http:
+  lottie:
   fluttertoast:
   flutter_bloc:
   flutter_image_slideshow:

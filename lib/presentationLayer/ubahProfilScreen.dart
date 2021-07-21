@@ -25,7 +25,7 @@ class _UbahProfilScreenState extends State<UbahProfilScreen> {
       isClickValidated = true;
     });
     if (_formKey.currentState.validate()){
-      Data pengguna = Data(nama: _nama.text, username: _username.text, password: _password.text);
+      Data pengguna = Data(namaPengguna: _nama.text, username: _username.text, password: _password.text);
       _ubahProfilBloc.add(UbahProfilEventSubmit(pengguna));
     }
   }
@@ -44,7 +44,7 @@ class _UbahProfilScreenState extends State<UbahProfilScreen> {
         cubit: _ubahProfilBloc,
         listener: (context, state) {
           if(state is UbahProfilStateSuccess){
-            _nama.text = state.pengguna.nama;
+            _nama.text = state.pengguna.namaPengguna;
             _username.text = state.pengguna.username;
             _password.text = state.pengguna.password;
             _passwordConfirm.text = state.pengguna.password;

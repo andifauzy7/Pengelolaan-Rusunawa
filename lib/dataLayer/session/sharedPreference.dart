@@ -10,7 +10,7 @@ class SharedPreference {
   static Future<void> savePengguna(Data pengguna) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_usernamePengguna, pengguna.username);
-    prefs.setString(_namaPengguna, pengguna.nama);
+    prefs.setString(_namaPengguna, pengguna.namaPengguna);
     prefs.setString(_password, pengguna.password);
     prefs.setInt(_idPengguna, int.parse(pengguna.idPengguna));
   }
@@ -63,7 +63,7 @@ class SharedPreference {
     int id = prefs.getInt(_idPengguna);
     Data pengguna = Data(
         idPengguna: id.toString(),
-        nama: nama,
+        namaPengguna: nama,
         username: usernameKey,
         password: password);
     if (pengguna != null) {

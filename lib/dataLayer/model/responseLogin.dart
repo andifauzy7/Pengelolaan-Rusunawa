@@ -29,15 +29,15 @@ class ResponseLogin {
 
 class Data {
   String idPengguna;
-  String nama;
+  String namaPengguna;
   String username;
   String password;
 
-  Data({this.idPengguna, this.nama, this.username, this.password});
+  Data({this.idPengguna, this.namaPengguna, this.username, this.password});
 
   Data.fromJson(Map<String, dynamic> json) {
     idPengguna = json['id_pengguna'];
-    nama = json['nama'];
+    namaPengguna = json['nama_pengguna'];
     username = json['username'];
     password = json['password'];
   }
@@ -45,7 +45,7 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id_pengguna'] = this.idPengguna;
-    data['nama'] = this.nama;
+    data['nama_pengguna'] = this.namaPengguna;
     data['username'] = this.username;
     data['password'] = this.password;
     return data;
