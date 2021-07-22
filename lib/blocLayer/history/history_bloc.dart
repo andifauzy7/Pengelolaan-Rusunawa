@@ -11,6 +11,8 @@ part 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   HistoryBloc() : super(HistoryStateLoading());
+  int idPasien;
+  var result;
 
   @override
   Stream<HistoryState> mapEventToState(
@@ -19,8 +21,21 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     if(event is HistoryEventGetRusunawa) {
       yield HistoryStateLoading();
       try {
-        int idPasien = await SharedPreference.getId();
-        var result = await RequestApi.getAllPenggunaRusunawa(idPasien.toString());
+        idPasien = await SharedPreference.getId();
+        result = await RequestApi.getAllPenggunaRusunawa(idPasien.toString());
+        ResponseRusunawa rusunawa = ResponseRusunawa.fromJson(result);
+        yield HistoryStateSuccess(rusunawa.data);
+      } catch (e) {
+        yield HistoryStateFailed(e.toString());
+      }
+    }
+
+    if(event is HistoryEventDelete) {
+      yield HistoryStateLoading();
+      try {
+        await RequestApi.deleteRusunawa(event.rusunawa.idRusunawa);
+        idPasien = await SharedPreference.getId();
+        result = await RequestApi.getAllPenggunaRusunawa(idPasien.toString());
         ResponseRusunawa rusunawa = ResponseRusunawa.fromJson(result);
         yield HistoryStateSuccess(rusunawa.data);
       } catch (e) {

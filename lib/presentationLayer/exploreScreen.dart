@@ -98,9 +98,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       child: GridView.builder(
                         itemCount: state.daftarRusunawa.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio:
-                                MediaQuery.of(context).size.width /
-                                    (MediaQuery.of(context).size.height * 0.5),
+                            childAspectRatio: 0.75,
                             crossAxisCount: 2,
                             crossAxisSpacing: 2.0,
                             mainAxisSpacing: 2.0),
@@ -158,6 +156,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                     child: Text(
                                       state.daftarRusunawa[index].nama
                                           .toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: ColorsTheme.mainColor,
                                           fontWeight: FontWeight.bold),
@@ -169,6 +169,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                     child: Text(
                                       state.daftarRusunawa[index].lokasi
                                           .toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize: 10.0,
                                           color: ColorsTheme.mainColor),

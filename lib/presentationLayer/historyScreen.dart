@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pengelolaan_rusunawa/blocLayer/history/history_bloc.dart';
+import 'package:pengelolaan_rusunawa/dataLayer/model/responseRusunawa.dart';
 import 'package:pengelolaan_rusunawa/presentationLayer/editRusunawaScreen.dart';
 import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
 
@@ -80,7 +81,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                     Expanded(
                         child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: EdgeInsets.symmetric(horizontal: 4.0),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -89,9 +90,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       child: GridView.builder(
                         itemCount: state.daftarRusunawa.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio:
-                                MediaQuery.of(context).size.width /
-                                    (MediaQuery.of(context).size.height * 0.5),
+                            childAspectRatio: 0.75,
                             crossAxisCount: 2,
                             crossAxisSpacing: 2.0,
                             mainAxisSpacing: 2.0),
@@ -149,6 +148,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                     child: Text(
                                       state.daftarRusunawa[index].nama
                                           .toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: ColorsTheme.mainColor,
                                           fontWeight: FontWeight.bold),
@@ -160,6 +161,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                     child: Text(
                                       state.daftarRusunawa[index].lokasi
                                           .toString(),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize: 10.0,
                                           color: ColorsTheme.mainColor),
@@ -198,15 +201,27 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                 color: ColorsTheme.mainColor),
                                           ),
                                         ),
-                                        InkWell(
-                                          child: Icon(Icons.edit),
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => EditRusunawaScreen(
-                                                        state.daftarRusunawa[index])));
-                                          },
+                                        Row(
+                                          children: [
+                                            InkWell(
+                                              child: Icon(Icons.edit, color: ColorsTheme.mainColor, size: 16.0,),
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            EditRusunawaScreen(state
+                                                                    .daftarRusunawa[
+                                                                index])));
+                                              },
+                                            ),
+                                            InkWell(
+                                              child: Icon(Icons.delete, color: ColorsTheme.mainColor, size: 16.0,),
+                                              onTap: () {
+                                                delete(context, state.daftarRusunawa[index]);
+                                              },
+                                            )
+                                          ],
                                         )
                                       ],
                                     ),
@@ -238,6 +253,33 @@ class _HistoryScreenState extends State<HistoryScreen> {
             }
           },
         ),
+      ),
+    );
+  }
+
+  delete(BuildContext context, Rusunawa rusunawa) {
+    showDialog(
+      context: context,
+      builder: (_) => new AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(24.0))),
+        title: new Text('Konfirmasi Hapus Rusunawa'),
+        content: new Text('Kamu setuju untuk hapus rusunawa?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            child: new Text('No'),
+          ),
+          TextButton(
+            onPressed: (){
+              Navigator.pop(context);
+              _historyBloc.add(HistoryEventDelete(rusunawa));
+            },
+            child: new Text('Yes', style: TextStyle(color: Colors.red),),
+          ),
+        ],
       ),
     );
   }
