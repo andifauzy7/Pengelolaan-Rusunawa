@@ -38,6 +38,7 @@ class Rusunawa {
   String jangkaPemeliharaan;
   String kondisiGedung;
   String gambar;
+  String fasilitas;
   String createdAt;
 
   Rusunawa(
@@ -51,6 +52,7 @@ class Rusunawa {
         this.jangkaPemeliharaan,
         this.kondisiGedung,
         this.gambar,
+        this.fasilitas,
         this.createdAt});
 
   Rusunawa.fromJson(Map<String, dynamic> json) {
@@ -64,6 +66,7 @@ class Rusunawa {
     jangkaPemeliharaan = json['jangka_pemeliharaan'];
     kondisiGedung = json['kondisi_gedung'];
     gambar = json['gambar'];
+    fasilitas = json['fasilitas'];
     createdAt = json['created_at'];
   }
 
@@ -79,6 +82,7 @@ class Rusunawa {
     data['jangka_pemeliharaan'] = this.jangkaPemeliharaan;
     data['kondisi_gedung'] = this.kondisiGedung;
     data['gambar'] = this.gambar;
+    data['fasilitas'] = this.fasilitas;
     data['created_at'] = this.createdAt;
     return data;
   }

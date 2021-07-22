@@ -48,7 +48,8 @@ class _PostingScreenState extends State<PostingScreen> {
         'penghuni': _penghuni.text,
         'jangka_pemeliharaan': _jangkaPemeliharaan.text,
         'kondisi_gedung': _kondisiGedung.toString(),
-        'gambar': _gambarRusunawa.text
+        'gambar': _gambarRusunawa.text,
+        'fasilitas' : _fasilitas.text,
       }));
     }
   }
@@ -381,6 +382,10 @@ class _PostingScreenState extends State<PostingScreen> {
                               return null;
                             }
                           },
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp('[a-zA-Z, ]')),
+                          ],
                         ),
                         SizedBox(height: 16.0),
                         TextFormField(

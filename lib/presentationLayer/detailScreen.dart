@@ -1,29 +1,47 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:pengelolaan_rusunawa/dataLayer/model/responseRusunawa.dart';
 import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
 
 class DetailScreen extends StatefulWidget {
+  Rusunawa rusunawa;
+  DetailScreen(this.rusunawa);
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  final List fasilitas = [
-    "Lift",
-    "Tempat Bermain Anak",
-    "Lapangan Olahraga",
-    "Tempat Parkir",
-    "Toilet",
-    "Penerangan Jalan",
-    "Saluran Pembuangan",
-    "Kipas",
-    "AC",
-    "Fasilitas Disabilitas"
-  ];
+  var hasil;
   @override
   Widget build(BuildContext context) {
+    var status =
+        widget.rusunawa.kondisiGedung;
+    var statusString;
+    if (status == "0") {
+      statusString = "Sangat Baik";
+    } else if (status == "1") {
+      statusString = "Baik";
+    } else if (status == "2") {
+      statusString = "Normal";
+    } else if (status == "3") {
+      statusString = "Rusak";
+    } else {
+      statusString = "Rusak Berat";
+    }
+
+    print(widget.rusunawa.fasilitas);
+
+    if(widget.rusunawa.fasilitas != null){
+      hasil = widget.rusunawa.fasilitas
+          .split(',')
+          .map((String text) => text)
+          .toList();
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rusunawa Berdikari"),
+        title: Text(widget.rusunawa.nama.toString()),
         backgroundColor: ColorsTheme.mainColor,
       ),
       body: Column(
@@ -53,7 +71,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('Ciwaruga, Politeknik Negeri Bandung',
+                    child: Text(widget.rusunawa.lokasi.toString(),
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
                   SizedBox(
@@ -71,7 +89,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('200 m2',
+                    child: Text('${widget.rusunawa.luasBangunan.toString()} m2',
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
                   SizedBox(
@@ -89,7 +107,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('300 m2',
+                    child: Text('${widget.rusunawa.luasTanah.toString()} m2',
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
                   SizedBox(
@@ -107,7 +125,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('24 dari 40',
+                    child: Text('${widget.rusunawa.penghuni.toString()} dari ${widget.rusunawa.kuota.toString()}',
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
                   SizedBox(
@@ -123,13 +141,13 @@ class _DetailScreenState extends State<DetailScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
+                  (widget.rusunawa.fasilitas != null) ? Container(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     width: MediaQuery.of(context).size.width,
                     height: 32,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: fasilitas.length,
+                      itemCount: hasil.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(right: 4.0),
@@ -140,7 +158,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8))),
                             child: Text(
-                              fasilitas[index],
+                              hasil[index].toString(),
                               style: TextStyle(
                                   fontSize: 14.0, color: ColorsTheme.white),
                             ),
@@ -148,6 +166,9 @@ class _DetailScreenState extends State<DetailScreen> {
                         );
                       },
                     ),
+                  ) : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("-"),
                   ),
                   SizedBox(
                     height: 16.0,
@@ -164,7 +185,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text('Baik',
+                    child: Text(statusString,
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
                 ],
