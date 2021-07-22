@@ -81,7 +81,7 @@ class RequestApi {
   }
 
   static Future<bool> editRusunawa(Map<String, dynamic> data, String id) async {
-    var uri = Uri.http(apiUrl, 'rusunawa/${id}');
+    var uri = Uri.http(apiUrl, 'rusunawa/edit/${id}');
     var result = await http.put(uri,
         body: data);
     log("editRusunawa (CODE : ${result.statusCode}) : ${result.body}");

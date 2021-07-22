@@ -188,6 +188,24 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Text(statusString,
                         style: TextStyle(color: ColorsTheme.mainColor)),
                   ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'Jangka Pemeliharaan',
+                      style: TextStyle(
+                          color: ColorsTheme.mainColor,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(widget.rusunawa.jangkaPemeliharaan + " Bulan.",
+                        style: TextStyle(color: ColorsTheme.mainColor)),
+                  ),
                 ],
               ),
             ),

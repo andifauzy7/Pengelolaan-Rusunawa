@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pengelolaan_rusunawa/blocLayer/history/history_bloc.dart';
+import 'package:pengelolaan_rusunawa/presentationLayer/editRusunawaScreen.dart';
 import 'package:pengelolaan_rusunawa/utils/colorsTheme.dart';
+
+import 'detailScreen.dart';
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -28,7 +31,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           cubit: _historyBloc,
           builder: (context, state) {
             if (state is HistoryStateSuccess) {
-              if(state.daftarRusunawa.length == 0){
+              if (state.daftarRusunawa.length == 0) {
                 return Container(
                   color: ColorsTheme.white,
                   child: Center(
@@ -77,116 +80,144 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                     Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(24),
-                                  topRight: Radius.circular(24))),
-                          child: GridView.builder(
-                            itemCount: state.daftarRusunawa.length,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio: MediaQuery.of(context).size.width /
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24),
+                              topRight: Radius.circular(24))),
+                      child: GridView.builder(
+                        itemCount: state.daftarRusunawa.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio:
+                                MediaQuery.of(context).size.width /
                                     (MediaQuery.of(context).size.height * 0.5),
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 2.0,
-                                mainAxisSpacing: 2.0),
-                            itemBuilder: (context, index) {
-                              var status = state.daftarRusunawa[index].kondisiGedung;
-                              var statusString;
-                              var colors;
-                              if(status == "0"){
-                                statusString = "Sangat Baik";
-                                colors = ColorsTheme.fiveColor;
-                              } else if(status == "1"){
-                                statusString = "Baik";
-                                colors = ColorsTheme.blueAccent;
-                              } else if(status == "2"){
-                                statusString = "Normal";
-                                colors = ColorsTheme.orangeAccent;
-                              } else if(status == "3"){
-                                statusString = "Rusak";
-                                colors = ColorsTheme.orangeAccentDark;
-                              } else {
-                                statusString = "Rusak Berat";
-                                colors = ColorsTheme.redAccent;
-                              }
-                              return Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(24.0)),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(24.0),
-                                          topRight: Radius.circular(24.0)),
-                                      child: Image.asset(
-                                        'assets/rusun3.jpg',
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,
-                                        height: 100,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0, right: 8.0, top: 8.0),
-                                      child: Text(
-                                        state.daftarRusunawa[index].nama.toString(),
-                                        style: TextStyle(
-                                            color: ColorsTheme.mainColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0, right: 8.0, top: 2.0),
-                                      child: Text(
-                                        state.daftarRusunawa[index].lokasi
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 10.0,
-                                            color: ColorsTheme.mainColor),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0, right: 8.0, top: 2.0),
-                                      child: Text(
-                                        '${state.daftarRusunawa[index].luasBangunan.toString()}m2 (LB) / ${state.daftarRusunawa[index].luasTanah.toString()}m2 (LT)',
-                                        style: TextStyle(
-                                            fontSize: 10.0,
-                                            color: ColorsTheme.mainColor),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0,
-                                          right: 8.0,
-                                          top: 2.0,
-                                          bottom: 8.0),
-                                      child: Container(
-                                        padding: EdgeInsets.all(8.0),
-                                        decoration: BoxDecoration(
-                                            color: colors,
-                                            borderRadius:
-                                            BorderRadius.all(Radius.circular(8))),
-                                        child: Text(
-                                          statusString,
-                                          style: TextStyle(
-                                              fontSize: 10.0,
-                                              color: ColorsTheme.mainColor),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 2.0,
+                            mainAxisSpacing: 2.0),
+                        itemBuilder: (context, index) {
+                          var status =
+                              state.daftarRusunawa[index].kondisiGedung;
+                          var statusString;
+                          var colors;
+                          if (status == "0") {
+                            statusString = "Sangat Baik";
+                            colors = ColorsTheme.fiveColor;
+                          } else if (status == "1") {
+                            statusString = "Baik";
+                            colors = ColorsTheme.blueAccent;
+                          } else if (status == "2") {
+                            statusString = "Normal";
+                            colors = ColorsTheme.orangeAccent;
+                          } else if (status == "3") {
+                            statusString = "Rusak";
+                            colors = ColorsTheme.orangeAccentDark;
+                          } else {
+                            statusString = "Rusak Berat";
+                            colors = ColorsTheme.redAccent;
+                          }
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailScreen(
+                                          state.daftarRusunawa[index])));
                             },
-                          ),
-                        ))
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(24.0)),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24.0),
+                                        topRight: Radius.circular(24.0)),
+                                    child: Image.asset(
+                                      'assets/rusun3.jpg',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 100,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 8.0, right: 8.0, top: 8.0),
+                                    child: Text(
+                                      state.daftarRusunawa[index].nama
+                                          .toString(),
+                                      style: TextStyle(
+                                          color: ColorsTheme.mainColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 8.0, right: 8.0, top: 2.0),
+                                    child: Text(
+                                      state.daftarRusunawa[index].lokasi
+                                          .toString(),
+                                      style: TextStyle(
+                                          fontSize: 10.0,
+                                          color: ColorsTheme.mainColor),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 8.0, right: 8.0, top: 2.0),
+                                    child: Text(
+                                      '${state.daftarRusunawa[index].luasBangunan.toString()}m2 (LB) / ${state.daftarRusunawa[index].luasTanah.toString()}m2 (LT)',
+                                      style: TextStyle(
+                                          fontSize: 10.0,
+                                          color: ColorsTheme.mainColor),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 8.0,
+                                        right: 8.0,
+                                        top: 2.0,
+                                        bottom: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.all(8.0),
+                                          decoration: BoxDecoration(
+                                              color: colors,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8))),
+                                          child: Text(
+                                            statusString,
+                                            style: TextStyle(
+                                                fontSize: 10.0,
+                                                color: ColorsTheme.mainColor),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          child: Icon(Icons.edit),
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => EditRusunawaScreen(
+                                                        state.daftarRusunawa[index])));
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ))
                   ],
                 );
               }
