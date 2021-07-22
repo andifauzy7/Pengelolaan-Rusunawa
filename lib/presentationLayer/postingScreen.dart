@@ -13,11 +13,11 @@ class PostingScreen extends StatefulWidget {
 
 class _PostingScreenState extends State<PostingScreen> {
   final List kondisiGedung = [
-    "Sangat Baik",
-    "Baik",
-    "Normal",
-    "Rusak",
-    "Rusak Berat"
+    [0,"Sangat Baik"],
+    [1,"Baik"],
+    [2,"Normal"],
+    [3,"Rusak"],
+    [4,"Rusak Berat"]
   ];
   PostingBloc _postingBloc = PostingBloc();
   TextEditingController _nama = TextEditingController();
@@ -435,18 +435,21 @@ class _PostingScreenState extends State<PostingScreen> {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                           ),
-                          value: kondisiGedung[0],
+                          value: _kondisiGedung,
                           hint: Text("Kondisi Gedung"),
                           items: kondisiGedung.map((value) {
                             return DropdownMenuItem(
                               child: Text(
-                                value,
+                                value[1],
                                 style: TextStyle(color: ColorsTheme.mainColor),
                               ),
-                              value: value,
+                              value: value[0],
                             );
                           }).toList(),
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            print(value);
+                            _kondisiGedung  = value;
+                          },
                         ),
                         SizedBox(height: 16.0),
                         TextFormField(

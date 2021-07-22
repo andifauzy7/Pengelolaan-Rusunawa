@@ -31,6 +31,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             if (state is ExploreStateSuccess) {
               if(state.daftarRusunawa.length == 0) {
                 return Container(
+                  color: ColorsTheme.white,
                   child: Center(
                     child: Container(
                       height: MediaQuery.of(context).size.height / 4,
@@ -211,12 +212,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
               }
             } else if (state is ExploreStateFailed) {
               return Container(
+                color: ColorsTheme.white,
                 child: Center(
                   child: Text(state.message),
                 ),
               );
             } else {
               return Container(
+                color: ColorsTheme.white,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ),

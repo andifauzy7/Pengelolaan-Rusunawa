@@ -56,6 +56,18 @@ class RequestApi {
   }
 
   // RUSUNAWA
+
+  static Future getInfoRusunawa(String id) async {
+    var uri = Uri.http(apiUrl, 'rusunawa/pengguna/info/${id}');
+    var result = await http.get(uri);
+    log("getInfoRusunawa (CODE : ${result.statusCode}) : ${result.body}");
+    if(result.statusCode == 200){
+      return json.decode(result.body);
+    } else {
+      return false;
+    }
+  }
+
   static Future<bool> insertRusunawa(Map<String, dynamic> data) async {
     var uri = Uri.http(apiUrl, 'rusunawa/insert');
     var result = await http.post(uri,
