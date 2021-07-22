@@ -22,8 +22,18 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         int idPasien = await SharedPreference.getId();
         var result = await RequestApi.getInfoRusunawa(idPasien.toString());
         ResponseInfoRusunawa rusunawa = ResponseInfoRusunawa.fromJson(result);
-        print(rusunawa.toJson());
-        yield DashboardStateSuccess(rusunawa.data[0]);
+        if(rusunawa.data.length != 0){
+          yield DashboardStateSuccess(rusunawa.data[0]);
+        } else {
+          List<InfoRusunawa> dataRusun = [
+            InfoRusunawa(
+              totalRusunawa: 0.toString(),
+              rusunawaPerbaikan: 0.toString(),
+            )
+          ];
+          rusunawa.data = dataRusun;
+          yield DashboardStateSuccess(rusunawa.data[0]);
+        }
       } catch (e) {
         yield DashboardStateFailed(e.toString());
       }
