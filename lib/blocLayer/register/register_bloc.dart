@@ -23,7 +23,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
         if(resultValidasi){
           var resultRegistrasi = await RequestApi.registerPengguna({
-            'nama' : event.nama,
+            'nama_pengguna' : event.nama,
             'username' : event.username,
             'password' : event.password
           });
