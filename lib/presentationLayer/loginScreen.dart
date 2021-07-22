@@ -85,9 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             : AutovalidateMode.disabled,
                         key: _formKey,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Row(
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
@@ -101,18 +101,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'Pengelolaan Rusunawa',
-                                      style: TextStyle(
-                                          color: ColorsTheme.mainColor,
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold),
+                                    Center(
+                                      child: Text(
+                                        'Pengelolaan Rusunawa',
+                                        style: TextStyle(
+                                            color: ColorsTheme.white,
+                                            fontSize: 24.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
-                                    Text(
-                                      'Halaman Login',
-                                      style: TextStyle(
-                                          color: ColorsTheme.mainColor,
-                                          fontSize: 16.0),
+                                    Center(
+                                      child: Text(
+                                        'Halaman Login',
+                                        style: TextStyle(
+                                            color: ColorsTheme.white,
+                                            fontSize: 16.0),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -125,23 +129,24 @@ class _LoginScreenState extends State<LoginScreen> {
                               decoration: InputDecoration(
                                 hintText: 'Isi username anda.',
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 labelText: 'Username',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.account_circle,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _username,
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -162,22 +167,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                 hintText: 'Masukkan kata sandi anda.',
                                 labelText: 'Kata Sandi',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.vpn_key,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _password,
                               validator: (value) {
                                 if (value.isEmpty) {

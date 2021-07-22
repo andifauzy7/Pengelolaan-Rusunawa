@@ -11,7 +11,7 @@ class BackgroundPainter extends CustomPainter {
 
     Path mainBackground = Path();
     mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
-    paint.color = ColorsTheme.fiveColor;
+    paint.color = ColorsTheme.mainColor;
     canvas.drawPath(mainBackground, paint);
 
     Path ovalPath = Path();
@@ -20,7 +20,7 @@ class BackgroundPainter extends CustomPainter {
     ovalPath.lineTo(width, height);
     ovalPath.close();
 
-    paint.color = ColorsTheme.white;
+    paint.color = ColorsTheme.secondColor;
     canvas.drawPath(ovalPath, paint);
   }
 

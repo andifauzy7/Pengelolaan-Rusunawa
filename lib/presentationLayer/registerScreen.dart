@@ -88,14 +88,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Text(
                               'Pengelolaan Rusunawa',
                               style: TextStyle(
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                   fontSize: 24.0,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'Halaman Registrasi',
                               style: TextStyle(
-                                  color: ColorsTheme.mainColor, fontSize: 16.0),
+                                  color: ColorsTheme.white, fontSize: 16.0),
                             ),
                             SizedBox(
                               height: 24.0,
@@ -104,23 +104,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               decoration: InputDecoration(
                                 hintText: 'Isi nama lengkap anda.',
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 labelText: 'Nama Lengkap',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.account_circle,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _nama,
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -139,23 +140,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               decoration: InputDecoration(
                                 hintText: 'Isi username anda.',
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 labelText: 'Username',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.account_circle,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _username,
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -176,22 +178,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 hintText: 'Masukkan kata sandi anda.',
                                 labelText: 'Kata Sandi',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.vpn_key,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _password,
                               validator: (value) {
                                 if (value.isEmpty) {
@@ -212,22 +215,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 hintText: 'Masukkan kata sandi anda.',
                                 labelText: 'Konfirmasi Kata Sandi',
                                 labelStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 hintStyle:
-                                    TextStyle(color: ColorsTheme.mainColor),
+                                    TextStyle(color: ColorsTheme.white),
                                 suffixIcon: Icon(
                                   Icons.vpn_key,
-                                  color: ColorsTheme.mainColor,
+                                  color: ColorsTheme.white,
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: ColorsTheme.mainColor),
+                                      BorderSide(color: ColorsTheme.white),
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                               ),
+                              style: TextStyle(color: ColorsTheme.white),
                               controller: _passwordConfirm,
                               validator: (value) {
                                 if (value.isEmpty) {
